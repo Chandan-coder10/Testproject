@@ -1,6 +1,7 @@
 {
 	"name": "pl_hospital_admission",
 	"properties": {
+		"description": "This is dataflow for hospital admission",
 		"activities": [
 			{
 				"name": "dataflowhospital",
