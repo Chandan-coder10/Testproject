@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "covidprojectadf"
+		},
+		"ls_azure_adls_covid_accountKey": {
+			"value": ""
+		},
+		"ls_azure_blob_storage_connectionString": {
+			"value": ""
+		},
+		"ls_azure_adls_covid_properties_typeProperties_url": {
+			"value": "https://mycovidadlschandan.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
