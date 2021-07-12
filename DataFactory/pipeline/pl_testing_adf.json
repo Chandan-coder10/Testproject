@@ -47,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Lookup1').output.value.country",
+						"value": "@activity('Lookup1').output.value.['country']",
 						"type": "Expression"
 					},
 					"condition": {
