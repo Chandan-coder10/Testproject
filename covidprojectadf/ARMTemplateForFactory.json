@@ -514,10 +514,10 @@
 					],
 					"transformations": [
 						{
-							"name": "Filter1"
+							"name": "Window1"
 						}
 					],
-					"script": "source(output(\n\t\tcountry as string,\n\t\tcountry_code_2_digit as string,\n\t\tcountry_code_3_digit as string,\n\t\tpopulation as string,\n\t\tyear_week as string,\n\t\tweek_end_date as string,\n\t\tweek_start_date as string,\n\t\tsource as string,\n\t\t{Weekly new hospital admissions per 100k_count} as string,\n\t\t{Weekly new ICU admissions per 100k_count} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 filter(country=='Spain') ~> Filter1\nFilter1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:['output.csv'],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tpartitionBy('hash', 1)) ~> sink1"
+					"script": "source(output(\n\t\tcountry as string,\n\t\tcountry_code_2_digit as string,\n\t\tcountry_code_3_digit as string,\n\t\tpopulation as string,\n\t\tyear_week as string,\n\t\tweek_end_date as string,\n\t\tweek_start_date as string,\n\t\tsource as string,\n\t\t{Weekly new hospital admissions per 100k_count} as integer,\n\t\t{Weekly new ICU admissions per 100k_count} as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 window(asc(country, false),\n\tTotal_hospital_count = sum({Weekly new hospital admissions per 100k_count}),\n\t\ttotal_ICU_count = sum({Weekly new ICU admissions per 100k_count})) ~> Window1\nWindow1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
 				}
 			},
 			"dependsOn": [
