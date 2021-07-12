@@ -111,8 +111,8 @@
 						}
 					},
 					{
-						"name": "ForEach1",
-						"type": "ForEach",
+						"name": "Filter1",
+						"type": "Filter",
 						"dependsOn": [
 							{
 								"activity": "Lookup1",
@@ -127,24 +127,10 @@
 								"value": "@activity('Lookup1').output.value",
 								"type": "Expression"
 							},
-							"activities": [
-								{
-									"name": "Filter1",
-									"type": "Filter",
-									"dependsOn": [],
-									"userProperties": [],
-									"typeProperties": {
-										"items": {
-											"value": "@item().country",
-											"type": "Expression"
-										},
-										"condition": {
-											"value": "@item().country=\"Spain\"",
-											"type": "Expression"
-										}
-									}
-								}
-							]
+							"condition": {
+								"value": "@equals(item(),'Spain')",
+								"type": "Expression"
+							}
 						}
 					}
 				],
