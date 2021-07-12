@@ -429,8 +429,31 @@
 								"type": "DelimitedTextReadSettings"
 							}
 						}
+					},
+					{
+						"name": "Set variable1",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "Count",
+							"value": "11"
+						}
 					}
 				],
+				"variables": {
+					"Count": {
+						"type": "String",
+						"defaultValue": "10"
+					}
+				},
 				"annotations": []
 			},
 			"dependsOn": [
